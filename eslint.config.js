@@ -5,7 +5,7 @@ import eslint from '@eslint/js';
 
 export default tseslint.config(
   {
-    ignores: [".next/**"],
+    ignores: [".next/**", "apps/web/next-env.d.ts"],
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,

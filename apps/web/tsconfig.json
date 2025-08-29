@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "allowJs": true,
     "incremental": true,
     "isolatedModules": true,
@@ -10,6 +10,13 @@
       {
         "name": "next"
       }
+    ],
+    "types": [
+      "react"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "../../node_modules/@types"
     ]
   },
   "include": [

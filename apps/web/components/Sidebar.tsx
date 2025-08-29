@@ -1,7 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import type { JSX } from 'react';
 
 export default function Sidebar({ locale }: { locale: string }) {
   const pathname = usePathname();
@@ -48,7 +49,7 @@ export default function Sidebar({ locale }: { locale: string }) {
     label,
   }: {
     href: string;
-    icon: JSX.Element;
+    icon: JSX.Element; // Temporary comment to force re-evaluation
     label: string;
   }) => {
     const active = isActive(href.split('/').pop() || '');
