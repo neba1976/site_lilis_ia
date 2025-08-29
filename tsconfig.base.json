@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "preserve",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@repo/i18n": [
+        "packages/i18n/src"
+      ],
+      "@repo/i18n/*": [
+        "packages/i18n/src/*"
+      ],
+      "@repo/contracts/*": [
+        "packages/contracts/src/*"
+      ],
+      "@repo/core/*": [
+        "packages/core/src/*"
+      ],
+      "@repo/ai/*": [
+        "packages/ai/src/*"
+      ],
+      "@repo/connectors/*": [
+        "packages/connectors/src/*"
+      ],
+      "@repo/db/*": [
+        "packages/db/src/*"
+      ],
+      "@repo/auth/*": [
+        "packages/auth/src/*"
+      ],
+      "@repo/ui/*": [
+        "packages/ui/src/*"
+      ],
+      "@repo/config/*": [
+        "packages/config/src/*"
+      ],
+      "@repo/testing/*": [
+        "packages/testing/src/*"
+      ]
+    }
+  }
+}

@@ -1,0 +1,24 @@
+node_modules
+.next
+out
+dist
+turbo
+.env*
+logs
+*.log
+.vscode/*
+!.vscode/extensions.json
+coverage
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Editor-specific
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.bak

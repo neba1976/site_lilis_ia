@@ -1,0 +1,1 @@
+import { NextRequest, NextResponse } from 'next/server'; interface Message { role: string; content: string; } export async function POST(req: NextRequest){ const {messages=[]}=await req.json(); const lastUser=[...messages].reverse().find((m: Message)=>m.role==='user')?.content??''; return NextResponse.json({reply:`Echo: ${lastUser}`}); }

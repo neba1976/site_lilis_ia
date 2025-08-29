@@ -1,0 +1,16 @@
+{
+  "name": "@repo/i18n",
+  "private": true,
+  "type": "module",
+  "version": "0.3.14",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "5.9.2",
+    "@types/node": "22.7.5"
+  },
+  "exports": "./src/index.ts"
+}

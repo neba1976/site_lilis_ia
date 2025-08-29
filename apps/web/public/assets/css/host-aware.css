@@ -1,0 +1,4 @@
+:root{ --sbw:0px; }
+@media (min-width:768px){ body{ margin-left:0; } }
+
+header, main, footer { transition: margin-inline-start .2s ease; }
