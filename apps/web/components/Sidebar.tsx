@@ -118,7 +118,7 @@ export default function Sidebar({ locale }: { locale: string }) {
           </div>
           <button
             onClick={() => setCollapsed((v) => !v)}
-            className="inline-flex items-center justify-center size-9 rounded-lg text-sm text-gray-500 hover:bg-gray-100 focus:outline-hidden dark:text-neutral-400 dark:hover:bg-neutral-700"
+            className="my-2 inline-flex items-center justify-center size-9 rounded-lg border hover:bg-gray-100 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-700/60"
             aria-label="Collapse sidebar"
             title={collapsed ? 'Expand' : 'Collapse'}
           >

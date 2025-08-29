@@ -1,12 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 
-
-
 export default function Home() {
-  
-  
-  
   useEffect(() => {}, []);
 
   return (
@@ -22,15 +17,21 @@ export default function Home() {
             <div className="flex items-center gap-2 px-1 pb-2 text-sm text-gray-500">
               <button className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1 hover:bg-gray-100 dark:hover:bg-neutral-700/60">
                 <svg
-                  className="size-4"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
+                  stroke-width="1.5"
                   stroke="currentColor"
+                  className="size-4"
                 >
-                  <path d="M12 5v14M5 12h14" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+                  />
                 </svg>
-                <span>Tools</span>
+
+                <span>Refresh</span>
               </button>
             </div>
             <div className="flex items-center gap-2">
@@ -39,53 +40,24 @@ export default function Home() {
                 placeholder="Ask anything..."
               />
               <div className="flex items-center gap-2">
-                <button className="inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-sm dark:border-neutral-700 dark:text-neutral-200">
-                  gpt-o3
-                  <svg
-                    className="size-3"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
                 <button className="inline-flex items-center justify-center size-9 rounded-lg bg-emerald-600 text-white">
                   <svg
-                    className="size-4"
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
                     fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
                     stroke="currentColor"
+                    className="size-6"
                   >
-                    <path d="m5 12 14-7-7 14-2-6-6-1z" />
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+                    />
                   </svg>
                 </button>
               </div>
             </div>
-          </div>
-
-          {/* Chips */}
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-            {[
-              'Health',
-              'Learn',
-              'Technology',
-              'Life stuff',
-              'Science',
-              'Language',
-            ].map((x, i) => (
-              <button
-                key={i}
-                className="inline-flex items-center gap-2 rounded-xl border px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-50 dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-700/60"
-              >
-                {x}
-              </button>
-            ))}
           </div>
         </div>
       </div>
