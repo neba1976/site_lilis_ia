@@ -41,7 +41,7 @@ export default async function RootLayout(props: {
         <link rel="icon" href="/assets/img/logo.svg" />
       </head>
       <body className="dark:bg-neutral-800 antialiased">
-        <PrelineScript />
+        
         {/* Sidebar global */}
         <Sidebar locale={locale} />
 
@@ -66,7 +66,7 @@ export default async function RootLayout(props: {
                 </Link>
               </div>
               <div className="flex items-center gap-2">
-                <LangSwitcher current={locale} />
+                <LangSwitcher />
               </div>
             </div>
           </div>
@@ -84,6 +84,8 @@ export default async function RootLayout(props: {
         >
           v3.12 • Next 15 • Custom i18n • Template UI
         </footer>
+      
+      <PrelineScript />
       </body>
     </html>
   );
