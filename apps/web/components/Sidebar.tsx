@@ -1,12 +1,14 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import type { JSX } from 'react';
+import { I18nContext } from './i18n-context';
 
 export default function Sidebar({ locale }: { locale: string }) {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState<boolean>(false);
+  const { t } = useContext(I18nContext);
 
   // Read persisted state
   useEffect(() => {
@@ -121,7 +123,7 @@ export default function Sidebar({ locale }: { locale: string }) {
             onClick={() => setCollapsed((v) => !v)}
             className="my-2 inline-flex items-center justify-center size-9 rounded-lg border hover:bg-gray-100 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-700/60"
             aria-label="Collapse sidebar"
-            title={collapsed ? 'Expand' : 'Collapse'}
+            title={collapsed ? t('sidebar.expand') : t('sidebar.collapse')}
           >
             {collapsed ? (
               <svg
@@ -154,12 +156,12 @@ export default function Sidebar({ locale }: { locale: string }) {
             className="text-xs uppercase text-gray-400 dark:text-neutral-500 mb-2"
             style={{ display: collapsed ? 'none' : 'block' }}
           >
-            Explore
+            {t('common.explore')}
           </div>
           <ul className="space-y-1">
             <Item
               href={`/${locale}/catalog`}
-              label="Catalog"
+              label={t('common.catalog')}
               icon={
                 <svg
                   className="size-4"
@@ -174,7 +176,7 @@ export default function Sidebar({ locale }: { locale: string }) {
             />
             <Item
               href={`/${locale}/team`}
-              label="Team"
+              label={t('common.team')}
               icon={
                 <svg
                   className="size-4"
@@ -190,7 +192,7 @@ export default function Sidebar({ locale }: { locale: string }) {
             />
             <Item
               href={`/${locale}/pricing`}
-              label="Pricing"
+              label={t('common.pricing')}
               icon={
                 <svg
                   className="size-4"
@@ -205,7 +207,7 @@ export default function Sidebar({ locale }: { locale: string }) {
             />
             <Item
               href={`/${locale}/faq`}
-              label="FAQ"
+              label={t('common.faq')}
               icon={
                 <svg
                   className="size-4"
@@ -221,7 +223,7 @@ export default function Sidebar({ locale }: { locale: string }) {
             />
             <Item
               href={`/${locale}/contact`}
-              label="Contact"
+              label={t('common.contact')}
               icon={
                 <svg
                   className="size-4"

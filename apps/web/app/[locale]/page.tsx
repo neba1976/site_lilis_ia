@@ -1,14 +1,17 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { I18nContext } from '../../components/i18n-context';
 
 export default function Home() {
+  const { t } = useContext(I18nContext);
+
   useEffect(() => {}, []);
 
   return (
     <div className="max-w-[90rem] mx-auto px-3 sm:px-6 lg:px-10 py-6 relative">
       <div className="max-w-3xl mx-auto pt-24 pb-16 text-center">
         <h1 className="text-2xl sm:text-3xl font-semibold text-gray-800 dark:text-neutral-100">
-          What can I help with?
+          {t('page.what_can_i_help_with')}
         </h1>
 
         {/* Chat input card */}
@@ -31,13 +34,13 @@ export default function Home() {
                   />
                 </svg>
 
-                <span>Refresh</span>
+                <span>{t('page.refresh')}</span>
               </button>
             </div>
             <div className="flex items-center gap-2">
               <input
                 className="flex-1 border rounded-xl px-4 py-3 text-[15px] placeholder:text-gray-400 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200"
-                placeholder="Ask anything..."
+                placeholder={t('page.ask_anything')}
               />
               <div className="flex items-center gap-2">
                 <button className="inline-flex items-center justify-center size-9 rounded-lg bg-emerald-600 text-white">

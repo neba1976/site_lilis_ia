@@ -1,12 +1,14 @@
 'use client';
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useMemo, useContext } from 'react';
 import { usePathname } from 'next/navigation';
 import { LANGS } from '@repo/i18n';
+import { I18nContext } from './i18n-context';
 
 export default function LangSwitcher() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
+  const { t } = useContext(I18nContext);
 
   useEffect(() => {
     const onDoc = (e: MouseEvent) => {
@@ -38,8 +40,8 @@ export default function LangSwitcher() {
     <div className="relative">
       <button
         ref={btnRef}
-        title="Translate"
-        aria-label="Translate"
+        title={t('common.translate')}
+        aria-label={t('common.translate')}
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}

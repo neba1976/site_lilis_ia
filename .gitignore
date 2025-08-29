@@ -21,4 +21,4 @@ Thumbs.db
 
 # Temporary files
 *.tmp
-*.bak
+*.bak*.tsbuildinfo

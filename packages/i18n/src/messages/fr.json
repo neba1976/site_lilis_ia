@@ -1,0 +1,20 @@
+{
+  "common": {
+    "catalog": "Catalogue",
+    "team": "Équipe",
+    "pricing": "Tarification",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "explore": "Explorer",
+    "translate": "Traduire"
+  },
+  "sidebar": {
+    "collapse": "Réduire",
+    "expand": "Développer"
+  },
+  "page": {
+    "what_can_i_help_with": "Comment puis-je vous aider?",
+    "refresh": "Actualiser",
+    "ask_anything": "Demandez n'importe quoi..."
+  }
+}
