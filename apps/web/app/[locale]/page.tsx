@@ -43,7 +43,7 @@ export default function Home() {
                 placeholder={t('page.ask_anything')}
               />
               <div className="flex items-center gap-2">
-                <button className="inline-flex items-center justify-center size-9 rounded-lg bg-emerald-600 text-white">
+                <button className="inline-flex items-center justify-center size-10 rounded-lg bg-neutral-600 text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

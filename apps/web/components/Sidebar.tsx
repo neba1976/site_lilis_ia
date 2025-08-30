@@ -138,7 +138,7 @@ export default function Sidebar({ locale }: { locale: string }) {
                 className="shrink-0 inline-flex items-center font-semibold w-full justify-center text-xl gap-x-2"
               >
                 <img
-                  src="/assets/img/logo-8.png"
+                  src="/assets/img/logo-2.png"
                   alt="Logo"
                   className="w-auto h-14"
                 />

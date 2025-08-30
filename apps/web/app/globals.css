@@ -2,3 +2,7 @@
 :root { --sbw: 0px; }
 header, main, footer { transition: margin-inline-start .2s ease; }
 #hs-pro-sidebar, #hs-pro-sidebar > div { width: var(--sbw, 0px); }
+
+.animate-ping-slow {
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}

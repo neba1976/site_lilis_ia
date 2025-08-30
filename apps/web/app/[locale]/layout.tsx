@@ -8,8 +8,6 @@ import Sidebar from '../../components/Sidebar';
 import { getMessages } from '@repo/i18n';
 import I18nProvider from '../../components/I18nProvider';
 
-
-
 const THEME_BOOTSTRAP = `
 const html = document.documentElement;
 const v = localStorage.getItem('hs_theme');
@@ -47,20 +45,25 @@ export default async function RootLayout(props: {
 
           {/* Header */}
           <header
-            className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur dark:bg-neutral-800/80 dark:border-neutral-700"
+            className="sticky top-0 z-40 bg-white/80 backdrop-blur dark:bg-neutral-800/80"
             style={{ marginInlineStart: 'var(--sbw, 0px)' }}
           >
             <div className="max-w-[85rem] w-full mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between gap-3 py-3">
                 <div className="flex items-center gap-2">
                   <Link href={`/${locale}`} className="flex items-center gap-2">
-                    <img
-                      src="/assets/img/logo.svg"
-                      alt="logo"
-                      className="size-7 rounded"
-                    />
+                    <span className="relative flex items-center justify-center size-6">
+                      {/* 1. La imagen original, pero sin borde ni animación */}
+                      <img
+                        src="/assets/img/icons/favicon.svg"
+                        alt="logo"
+                        className="size-6 rounded-lg"
+                      />
+                      {/* 2. Un nuevo elemento 'span' que actúa como el borde animado */}
+                      <span className="absolute h-full w-full rounded-lg border border-white animate-ping-slow"></span>
+                    </span>
                     <span className="font-semibold dark:text-neutral-200">
-                      AI Suite
+                      Miry | Asistente Virtual
                     </span>
                   </Link>
                 </div>
