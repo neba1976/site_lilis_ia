@@ -21,4 +21,9 @@ Thumbs.db
 
 # Temporary files
 *.tmp
-*.bak*.tsbuildinfo
+*.bak/.turbo/
+
+/.turbo/
+/apps/**/.next/
+/apps/**/.next/cache
+*.tsbuildinfo
