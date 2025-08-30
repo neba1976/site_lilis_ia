@@ -1,11 +1,12 @@
 'use client';
 import { useState, useRef, useEffect, useMemo, useContext } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation'; // Importa useRouter
 import { LANGS } from '@repo/i18n';
 import { I18nContext } from './i18n-context';
 
 export default function LangSwitcher() {
   const pathname = usePathname();
+  const router = useRouter(); // Inicializa useRouter
   const [open, setOpen] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
   const { t } = useContext(I18nContext);
@@ -33,7 +34,7 @@ export default function LangSwitcher() {
   }, [pathname]);
 
   const go = (code: string) => {
-    window.location.assign(`/${code}${restPath}`);
+    router.push(`/${code}${restPath}`); // Usa router.push() para navegación del lado del cliente
   };
 
   return (
