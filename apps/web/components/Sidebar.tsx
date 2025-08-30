@@ -7,8 +7,40 @@ import { I18nContext } from './i18n-context';
 
 export default function Sidebar({ locale }: { locale: string }) {
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [collapsed, setCollapsed] = useState<boolean>(false); // This is the state controlled by the button
   const { t } = useContext(I18nContext);
+
+  // State to track if we are in mobile mode
+  const [isMobileMode, setIsMobileMode] = useState(false);
+
+  // Effect to detect mobile mode and update isMobileMode state
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const handleMediaQueryChange = (e: MediaQueryListEvent) => {
+      setIsMobileMode(!e.matches); // true if screen < 768px
+    };
+
+    // Initial check
+    setIsMobileMode(!mediaQuery.matches);
+
+    // Listen for changes
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+    };
+  }, []); // Run once on mount
+
+  // Effect to control the 'collapsed' state based on 'isMobileMode'
+  useEffect(() => {
+    if (isMobileMode) {
+      // If entering mobile mode, collapse the sidebar
+      setCollapsed(true);
+    } else {
+      // If exiting mobile mode (going to desktop), expand the sidebar
+      setCollapsed(false);
+    }
+  }, [isMobileMode]); // Run whenever isMobileMode changes
 
   // Read persisted state
   useEffect(() => {
@@ -34,13 +66,7 @@ export default function Sidebar({ locale }: { locale: string }) {
     return () => cancelAnimationFrame(id);
   }, [collapsed]);
 
-  // Sync on mount & on resize (viewport changes)
-  useEffect(() => {
-    syncWidthVar(collapsed);
-    const onResize = () => syncWidthVar(collapsed);
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
+  
 
   const isActive = (slug: string) =>
     pathname ? pathname.startsWith(`/${locale}/${slug}`) : false;
@@ -51,7 +77,7 @@ export default function Sidebar({ locale }: { locale: string }) {
     label,
   }: {
     href: string;
-    icon: JSX.Element; // Temporary comment to force re-evaluation
+    icon: JSX.Element; 
     label: string;
   }) => {
     const active = isActive(href.split('/').pop() || '');
@@ -119,36 +145,38 @@ export default function Sidebar({ locale }: { locale: string }) {
               </a>
             )}
           </div>
-          <button
-            onClick={() => setCollapsed((v) => !v)}
-            className="my-2 inline-flex items-center justify-center size-9 rounded-lg border hover:bg-gray-100 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-700/60"
-            aria-label="Collapse sidebar"
-            title={collapsed ? t('sidebar.expand') : t('sidebar.collapse')}
-          >
-            {collapsed ? (
-              <svg
-                className="size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M15 3v18" />
-                <path d="m8 9 3 3-3 3" />
-              </svg>
-            ) : (
-              <svg
-                className="size-4"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M15 3v18" />
-                <path d="m10 15-3-3 3-3" />
-              </svg>
-            )}
-          </button>
+          {!isMobileMode && (
+            <button
+              onClick={() => setCollapsed((v) => !v)}
+              className="my-2 inline-flex items-center justify-center size-9 rounded-lg border hover:bg-gray-100 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-700/60"
+              aria-label="Collapse sidebar"
+              title={collapsed ? t('sidebar.expand') : t('sidebar.collapse')}
+            >
+              {collapsed ? (
+                <svg
+                  className="size-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M15 3v18" />
+                  <path d="m8 9 3 3-3 3" />
+                </svg>
+              ) : (
+                <svg
+                  className="size-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d="M15 3v18" />
+                  <path d="m10 15-3-3 3-3" />
+                </svg>
+              )}
+            </button>
+          )}
         </header>
 
         <nav className="px-3 py-4">
