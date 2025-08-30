@@ -24,8 +24,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          # Usa la versión que realmente usas en el repo. Si hoy es 8, deja 8.
-          version: 8
+          version: 10.15.0  # 🟢 Coincide con package.json
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -36,7 +35,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # Cache de Turbo (local). No versionar .turbo en git.
       - name: Cache Turborepo
         uses: actions/cache@v4
         with:
@@ -45,12 +43,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      # (Opcional) Cache del compilado incremental de Next.js
       - name: Cache Next.js (apps/web)
         uses: actions/cache@v4
         with:
-          path: |
-            apps/web/.next/cache
+          path: apps/web/.next/cache
           key: ${{ runner.os }}-next-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ github.ref }}
           restore-keys: |
             ${{ runner.os }}-next-
