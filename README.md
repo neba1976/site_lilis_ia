@@ -3,6 +3,8 @@
 ![Project Status](https://img.shields.io/badge/status-in_development-orange.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
+![CI](https://github.com/neba1976/site_lilis_ia/actions/workflows/ci.yml/badge.svg)
+
 ## Descripción
 
 LILIS AI Suite es una aplicación web moderna construida como un monorepo utilizando TurboRepo, diseñada para ofrecer una interfaz de chat con inteligencia artificial. La aplicación cuenta con soporte multi-idioma, un sidebar colapsable y una API de chat de ejemplo. Su arquitectura modular facilita el desarrollo y mantenimiento de diferentes componentes y servicios.

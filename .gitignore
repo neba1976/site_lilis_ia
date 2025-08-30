@@ -9,6 +9,7 @@ logs
 .vscode/*
 !.vscode/extensions.json
 coverage
+*.bak
 
 # OS-specific
 .DS_Store
