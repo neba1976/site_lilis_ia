@@ -1,13 +1,12 @@
-# LILIS AI Suite
+# Lili's Inkwell - IA
 
-![Project Status](https://img.shields.io/badge/status-in_development-orange.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-
+![Project Status](https://img.io/badge/status-in_development-orange.svg)
+![License](https://img.io/badge/license-MIT-blue.svg)
 ![CI](https://github.com/neba1976/site_lilis_ia/actions/workflows/ci.yml/badge.svg)
 
 ## Descripción
 
-LILIS AI Suite es una aplicación web moderna construida como un monorepo utilizando TurboRepo, diseñada para ofrecer una interfaz de chat con inteligencia artificial. La aplicación cuenta con soporte multi-idioma, un sidebar colapsable y una API de chat de ejemplo. Su arquitectura modular facilita el desarrollo y mantenimiento de diferentes componentes y servicios.
+Lili's Inkwell - IA es una aplicación web moderna construida como un monorepo utilizando TurboRepo, diseñada para ofrecer una interfaz de chat con inteligencia artificial. La aplicación cuenta con soporte multi-idioma, un sidebar colapsable y una API de chat de ejemplo. Su arquitectura modular facilita el desarrollo y mantenimiento de diferentes componentes y servicios.
 
 ## Características
 
@@ -17,6 +16,22 @@ LILIS AI Suite es una aplicación web moderna construida como un monorepo utiliz
 *   **Sidebar Colapsable:** Un menú lateral dinámico que se expande y colapsa, adaptándose a diferentes tamaños de pantalla.
 *   **Temas (Claro/Oscuro):** Soporte para alternar entre modos de visualización claro y oscuro.
 *   **Tecnologías Modernas:** Construido con Next.js, React, TypeScript y Tailwind CSS para una experiencia de desarrollo robusta y escalable.
+
+## Mejoras Recientes
+
+Se han implementado las siguientes mejoras y correcciones para optimizar la funcionalidad y la experiencia de desarrollo:
+
+*   **Internacionalización (i18n) Mejorada:**
+    *   Se corrigieron errores de importación y tipado (`TypeError: Cannot read properties of undefined`, `export 'Locale' not found`) en los componentes relacionados con i18n (`Sidebar`, `LangSwitcher`, `Home`) y en el paquete `@repo/i18n`.
+    *   Las funciones de traducción (`t`) y formateo (`format`) ahora manejan correctamente las claves anidadas (ej. `common.catalog`), permitiendo una estructura de mensajes más organizada.
+    *   Se eliminaron advertencias de ESLint (`no-explicit-any`) y errores de TypeScript (`'message' is of type 'unknown'`) en el `I18nProvider` mediante un manejo de tipos más robusto.
+
+*   **Navegación Fluida:**
+    *   Se mejoró la experiencia de cambio de idioma eliminando las recargas completas de la página. Ahora, el `LangSwitcher` utiliza `router.push()` de Next.js para una navegación del lado del cliente más suave y que preserva el estado de la UI.
+
+*   **Sidebar Adaptativo y Optimizado:**
+    *   **Comportamiento Responsivo:** El sidebar ahora se colapsa automáticamente al entrar en modo móvil y se expande al salir de él, utilizando la lógica de estilo existente para una adaptación visual perfecta.
+    *   **Control de Visibilidad del Botón:** El botón de colapsar/expandir del sidebar se oculta automáticamente en modo móvil y se muestra en modo de escritorio, optimizando el espacio y la interacción del usuario.
 
 ## Tecnologías Utilizadas
 
@@ -112,12 +127,19 @@ site_lilis_v3_12_2/
 │   ├── testing/    # Utilidades para pruebas
 │   └── ui/         # Componentes de UI compartidos
 ├── .env            # Variables de entorno globales
+├── .github/        # Configuraciones de GitHub (ej. GitHub Actions workflows)
+├── .turbo/         # Caché de TurboRepo
+├── .env            # Variables de entorno globales (no versionadas)
 ├── .gitignore      # Archivos y directorios ignorados por Git
+├── .prettierrc     # Configuración de Prettier para formateo de código
 ├── eslint.config.js # Configuración de ESLint (nuevo formato)
 ├── package.json    # Configuración del monorepo y scripts
 ├── pnpm-lock.yaml  # Lockfile de pnpm
 ├── pnpm-workspace.yaml # Definición del workspace de pnpm
 └── README.md       # Documentación del proyecto
+├── README.md       # Documentación del proyecto
+├── tsconfig.base.json # Configuración base de TypeScript
+└── turbo.json      # Configuración de TurboRepo
 ```
 
 ## Repositorio GitHub
