@@ -3,7 +3,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useState, useContext } from 'react';
 import type { JSX } from 'react';
+import { useCallback } from 'react';
 import { I18nContext } from './i18n-context';
+import Image from 'next/image';
 
 export default function Sidebar({ locale }: { locale: string }) {
   const pathname = usePathname();
@@ -49,14 +51,17 @@ export default function Sidebar({ locale }: { locale: string }) {
   }, []);
 
   // Utility: update CSS var --sbw based on viewport & state
-  const syncWidthVar = (stateCollapsed = collapsed) => {
-    const md = window.matchMedia('(min-width: 768px)').matches;
-    const width = md ? (stateCollapsed ? 52 : 260) : 52;
-    document.documentElement.style.setProperty('--sbw', width + 'px');
-    window.dispatchEvent(
-      new CustomEvent('sidebar-width-change', { detail: { width } }),
-    );
-  };
+  const syncWidthVar = useCallback(
+    (stateCollapsed = collapsed) => {
+      const md = window.matchMedia('(min-width: 768px)').matches;
+      const width = md ? (stateCollapsed ? 52 : 260) : 52;
+      document.documentElement.style.setProperty('--sbw', width + 'px');
+      window.dispatchEvent(
+        new CustomEvent('sidebar-width-change', { detail: { width } }),
+      );
+    },
+    [collapsed],
+  );
 
   // Persist & sync on change
   useEffect(() => {
@@ -64,9 +69,7 @@ export default function Sidebar({ locale }: { locale: string }) {
     // defer to next tick to ensure DOM is ready
     const id = requestAnimationFrame(() => syncWidthVar(collapsed));
     return () => cancelAnimationFrame(id);
-  }, [collapsed]);
-
-  
+  }, [collapsed, syncWidthVar]);
 
   const isActive = (slug: string) =>
     pathname ? pathname.startsWith(`/${locale}/${slug}`) : false;
@@ -77,7 +80,7 @@ export default function Sidebar({ locale }: { locale: string }) {
     label,
   }: {
     href: string;
-    icon: JSX.Element; 
+    icon: JSX.Element;
     label: string;
   }) => {
     const active = isActive(href.split('/').pop() || '');
@@ -137,10 +140,13 @@ export default function Sidebar({ locale }: { locale: string }) {
                 aria-label="Logo"
                 className="shrink-0 inline-flex items-center font-semibold w-full justify-center text-xl gap-x-2"
               >
-                <img
+                <Image
                   src="/assets/img/logo-2.png"
                   alt="Logo"
-                  className="w-auto h-14"
+                  width={56}
+                  height={56}
+                  style={{ height: '56px', width: 'auto' }}
+                  className="h-14"
                 />
               </a>
             )}

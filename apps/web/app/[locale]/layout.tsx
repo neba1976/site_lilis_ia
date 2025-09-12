@@ -7,6 +7,7 @@ import LangSwitcher from '../../components/LangSwitcher';
 import Sidebar from '../../components/Sidebar';
 import { getMessages } from '@repo/i18n';
 import I18nProvider from '../../components/I18nProvider';
+import Image from 'next/image';
 
 const THEME_BOOTSTRAP = `
 const html = document.documentElement;
@@ -29,10 +30,6 @@ export default async function RootLayout(props: {
   return (
     <html lang={locale} className="relative min-h-full">
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
         <Script id="theme-bootstrap" strategy="beforeInteractive">
           {THEME_BOOTSTRAP}
         </Script>
@@ -53,10 +50,12 @@ export default async function RootLayout(props: {
                 <div className="flex items-center gap-2">
                   <Link href={`/${locale}`} className="flex items-center gap-2">
                     <span className="relative flex items-center justify-center size-6">
-                      {/* 1. La imagen original, pero sin borde ni animación */}
-                      <img
+                      {/* 1. Imagen optimizada con next/image */}
+                      <Image
                         src="/assets/img/icons/favicon.svg"
                         alt="logo"
+                        width={24}
+                        height={24}
                         className="size-6 rounded-lg"
                       />
                       {/* 2. Un nuevo elemento 'span' que actúa como el borde animado */}
